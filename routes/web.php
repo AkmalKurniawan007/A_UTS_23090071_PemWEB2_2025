@@ -20,8 +20,8 @@ Route::get('/Keranjang', function(){
 });
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+    return view('web.homepage');
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
