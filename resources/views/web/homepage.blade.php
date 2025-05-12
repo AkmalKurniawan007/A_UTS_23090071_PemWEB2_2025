@@ -1,37 +1,33 @@
 <x-layout>
+    {{-- Hero Section --}}
     <div class="hero">
         <h1>Welcome to Our Store</h1>
         <p>Discover the best products at the best prices.</p>
         <a href="#" class="btn btn-primary">Shop Now</a>
     </div>
 
-    <div class="container mt-5">
-        <h2 class="text-center mb-4">Featured Products</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <x-card 
-                    title="Product 1" 
-                    text="High-quality product with affordable price." 
-                    image="https://source.unsplash.com/400x300/?clothing"
-                />
+    <div class="row">
+            <h3>Categories</h3>
+            
+            @foreach($category as $category)
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="{{ $category['image'] }}" class="card-img-top" alt="{{ $category['name'] }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $category['name'] }}</h5>
+                        <p class="card-text">
+                            {{ $category['description'] }}
+                        </p>
+                        <a href="/category/{{ $category['slug'] }}" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-                <x-card 
-                    title="Product 2" 
-                    text="Stylish and comfortable footwear." 
-                    image="https://source.unsplash.com/400x300/?shoes"
-                />
-            </div>
-            <div class="col-md-4">
-                <x-card 
-                    title="Product 3" 
-                    text="Trendy accessories for all occasions." 
-                    image="https://source.unsplash.com/400x300/?accessories"
-                />
-            </div>
-        </div>
+            @endforeach
+        </div>v>
+    </div>
 
-        {{-- Alert Component --}}
+    {{-- Alert Component --}}
+    <div class="container mt-5">
         <x-alert type="success" message="Limited time offer! Grab your favorite items now." />
     </div>
 </x-layout>
